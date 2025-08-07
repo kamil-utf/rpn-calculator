@@ -39,6 +39,11 @@ class RpnCalculatorTest {
     }
 
     @Test
+    void shouldCalculatePowerOperation() throws InvalidExpressionException {
+        assertEquals(512, rpnCalculator.calculate("2 ^ 3 ^ 2"));
+    }
+
+    @Test
     void shouldThrowInvalidExpressionException() {
         assertAll(
             () -> assertThrows(InvalidExpressionException.class, () -> rpnCalculator.calculate(" ")),

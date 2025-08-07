@@ -30,7 +30,9 @@ class RpnConverter {
                 output.add(token);
             } else if (token.isOperator()) {
                 final var tokenOperator = (OperatorToken) token;
-                while (!stack.isEmpty() && tokenOperator.getPriority() <= stack.peek().getPriority()) {
+                while (!stack.isEmpty()
+                        && (!tokenOperator.isRightHand() && tokenOperator.getPriority() <= stack.peek().getPriority())
+                        && (tokenOperator.isRightHand() && tokenOperator.getPriority() < stack.peek().getPriority())) {
                     output.add(stack.pop());
                 }
                 stack.push(tokenOperator);

@@ -13,9 +13,15 @@ public class TokenFactory {
             return new MultiplicationOperator();
         } else if (isDivisionOperator(value)) {
             return new DivisionOperator();
+        } else if (isPowerOperator(value)) {
+            return new PowerOperator();
         } else {
             throw new IllegalArgumentException("Cannot recognize token by value: " + value);
         }
+    }
+
+    private boolean isPowerOperator(String value) {
+        return PowerOperator.TOKEN.equals(value);
     }
 
     private boolean isInteger(String value) {

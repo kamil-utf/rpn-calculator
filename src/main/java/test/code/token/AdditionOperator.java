@@ -14,6 +14,11 @@ public class AdditionOperator implements OperatorToken {
     }
 
     @Override
+    public boolean isRightHand() {
+        return false;
+    }
+
+    @Override
     public boolean isNumber() {
         return false;
     }
